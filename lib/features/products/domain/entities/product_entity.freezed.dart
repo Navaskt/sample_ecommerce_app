@@ -221,15 +221,15 @@ return $default(_that.id,_that.title,_that.price,_that.description,_that.categor
 
 
 class _ProductEntity implements ProductEntity {
-  const _ProductEntity({this.id = 0, this.title = '', this.price = 0, this.description = '', this.category = '', this.image = '', this.rating = const RatingEntity()});
+  const _ProductEntity({required this.id, required this.title, required this.price, required this.description, required this.category, required this.image, this.rating = const RatingEntity()});
   
 
-@override@JsonKey() final  int id;
-@override@JsonKey() final  String title;
-@override@JsonKey() final  double price;
-@override@JsonKey() final  String description;
-@override@JsonKey() final  String category;
-@override@JsonKey() final  String image;
+@override final  int id;
+@override final  String title;
+@override final  double price;
+@override final  String description;
+@override final  String category;
+@override final  String image;
 @override@JsonKey() final  RatingEntity rating;
 
 /// Create a copy of ProductEntity

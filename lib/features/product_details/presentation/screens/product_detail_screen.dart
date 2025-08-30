@@ -6,6 +6,11 @@ class ProductDetailScreen extends ConsumerWidget {
   final int id;
   @override
   Widget build(BuildContext context, ref) {
-    return Scaffold(body: Column(children: [Text('Detail show heare...')]));
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Center(child: Text('Detail show heare...'))],
+      ),
+    );
   }
 }

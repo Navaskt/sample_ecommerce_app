@@ -7,6 +7,7 @@ import 'core/navigation/app_router.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
+  getIt<AppRouter>().initialize();
   runApp(ProviderScope(child: const MyApp()));
 }
 

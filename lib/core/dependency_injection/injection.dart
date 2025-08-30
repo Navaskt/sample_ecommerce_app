@@ -4,9 +4,5 @@ import 'package:sample_ecommerce_app/core/dependency_injection/injection.config.
 
 final GetIt getIt = GetIt.instance;
 
-@InjectableInit(
-  initializerName: 'init',
-  preferRelativeImports: true,
-  asExtension: true,
-)
+@InjectableInit()
 Future<void> configureDependencies() async => getIt.init();

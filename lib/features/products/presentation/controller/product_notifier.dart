@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:sample_ecommerce_app/core/dependency_injection/injection.dart';
-import 'package:sample_ecommerce_app/features/products/domain/usecases/get_product_usecases.dart';
 
+import '../../../../core/dependency_injection/injection.dart';
 import '../../domain/entities/product_entity.dart';
+import '../../domain/usecases/get_product_usecases.dart';
 
 part 'product_state.dart';
 part 'product_notifier.freezed.dart';

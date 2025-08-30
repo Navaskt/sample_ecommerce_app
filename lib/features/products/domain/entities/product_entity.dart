@@ -5,12 +5,12 @@ part 'product_entity.freezed.dart';
 @freezed
 abstract class ProductEntity with _$ProductEntity {
   const factory ProductEntity({
-    required int id,
-    required String title,
-    required double price,
-    required String description,
-    required String category,
-    required String image,
+    @Default(0) int id,
+    @Default('') String title,
+    @Default(0) double price,
+    @Default('') String description,
+    @Default('') String category,
+    @Default('') String image,
     @Default(RatingEntity()) RatingEntity rating,
   }) = _ProductEntity;
 }

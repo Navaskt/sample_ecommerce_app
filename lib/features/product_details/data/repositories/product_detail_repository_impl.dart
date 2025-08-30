@@ -6,7 +6,7 @@ import 'package:sample_ecommerce_app/features/products/data/mappers/product_mapp
 import '../../../../core/service/api/request_handler.dart';
 import '../../../products/domain/entities/product_entity.dart';
 import '../../domain/repositories/product_detail_repository.dart';
-import '../datasourse/product_detail_remote_impl.dart';
+import '../datasourse/product_detail_remote.dart';
 
 @LazySingleton(as: ProductDetailRepository)
 class ProductDetailRepositoryImpl implements ProductDetailRepository {

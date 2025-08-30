@@ -224,15 +224,15 @@ return $default(_that.id,_that.title,_that.price,_that.description,_that.categor
 @JsonSerializable()
 
 class _ProductModel implements ProductModel {
-  const _ProductModel({required this.id, required this.title, required this.price, required this.description, required this.category, required this.image, @JsonKey(name: 'rating') this.rating = const Rating()});
+  const _ProductModel({this.id = 0, this.title = '', this.price = 0, this.description = '', this.category = '', this.image = '', @JsonKey(name: 'rating') this.rating = const Rating()});
   factory _ProductModel.fromJson(Map<String, dynamic> json) => _$ProductModelFromJson(json);
 
-@override final  int id;
-@override final  String title;
-@override final  double price;
-@override final  String description;
-@override final  String category;
-@override final  String image;
+@override@JsonKey() final  int id;
+@override@JsonKey() final  String title;
+@override@JsonKey() final  double price;
+@override@JsonKey() final  String description;
+@override@JsonKey() final  String category;
+@override@JsonKey() final  String image;
 @override@JsonKey(name: 'rating') final  Rating rating;
 
 /// Create a copy of ProductModel

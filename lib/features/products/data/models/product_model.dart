@@ -6,12 +6,12 @@ part 'product_model.g.dart';
 @freezed
 abstract class ProductModel with _$ProductModel {
   const factory ProductModel({
-    required int id,
-    required String title,
-    required double price,
-    required String description,
-    required String category,
-    required String image,
+    @Default(0) int id,
+    @Default('') String title,
+    @Default(0) double price,
+    @Default('') String description,
+    @Default('') String category,
+    @Default('') String image,
     @JsonKey(name: 'rating') @Default(Rating()) Rating rating,
   }) = _ProductModel;
 
@@ -25,4 +25,3 @@ abstract class Rating with _$Rating {
       _Rating;
   factory Rating.fromJson(Map<String, dynamic> json) => _$RatingFromJson(json);
 }
-

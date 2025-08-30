@@ -38,7 +38,7 @@ class ProductListItemWidget extends StatelessWidget {
                   height: 150,
                   decoration: BoxDecoration(
                     color: Colors.grey.shade400,
-                    borderRadius: BorderRadius.circular(0.0),
+                    borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: Image.network(
                     imageUrl,

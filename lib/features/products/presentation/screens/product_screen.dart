@@ -17,28 +17,26 @@ class ProductScreen extends ConsumerWidget {
         title: Text("All Products"),
         backgroundColor: Colors.blueGrey,
       ),
-      body: SafeArea(
-        child: state.products.when(
-          data: (product) {
-            return ListView.builder(
-              itemCount: product.length,
-              itemBuilder: (context, index) {
-                return ProductListItemWidget(
-                  title: product[index].title,
-                  subtitle: product[index].description,
-                  imageUrl: product[index].image,
-                  onTapItem: () => context.go(
-                    AppRouterPath.detailPage,
-                    extra: product[index].id,
-                  ),
-                );
-              },
-            );
-          },
-          error: (error, stackTrace) =>
-              AppErrorWidget(errorMessage: error.toString()),
-          loading: () => Center(child: CircularProgressIndicator()),
-        ),
+      body: state.products.when(
+        data: (product) {
+          return ListView.builder(
+            itemCount: product.length,
+            itemBuilder: (context, index) {
+              return ProductListItemWidget(
+                title: product[index].title,
+                subtitle: product[index].description,
+                imageUrl: product[index].image,
+                onTapItem: () => context.go(
+                  AppRouterPath.detailPage,
+                  extra: product[index].id,
+                ),
+              );
+            },
+          );
+        },
+        error: (error, stackTrace) =>
+            AppErrorWidget(errorMessage: error.toString()),
+        loading: () => Center(child: CircularProgressIndicator()),
       ),
     );
   }

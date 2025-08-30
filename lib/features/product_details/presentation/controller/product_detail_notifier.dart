@@ -13,6 +13,7 @@ part 'product_detail_notifier.g.dart';
 class ProductDetailNotifier extends _$ProductDetailNotifier {
   @override
   ProductDetailState build(int id) {
+    Future.microtask(() => getProductDetail(id));
     return ProductDetailState();
   }
 

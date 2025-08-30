@@ -18,6 +18,14 @@ import 'package:sample_ecommerce_app/core/service/api/request_handler.dart'
     as _i383;
 import 'package:sample_ecommerce_app/core/service/clients/product_client.dart'
     as _i657;
+import 'package:sample_ecommerce_app/features/product_details/data/datasourse/product_detail_remote_impl.dart'
+    as _i1;
+import 'package:sample_ecommerce_app/features/product_details/data/repositories/product_detail_repository_impl.dart'
+    as _i310;
+import 'package:sample_ecommerce_app/features/product_details/domain/repositories/product_detail_repository.dart'
+    as _i798;
+import 'package:sample_ecommerce_app/features/product_details/domain/usecases/get_product_detail_usecase.dart'
+    as _i260;
 import 'package:sample_ecommerce_app/features/products/data/datasources/product_remote_impl.dart'
     as _i436;
 import 'package:sample_ecommerce_app/features/products/data/repositories/product_repository_imple.dart'
@@ -43,11 +51,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i436.ProductRemoteDataSourse>(
       () => _i436.ProductRemoteImpl(gh<_i657.ProductClient>()),
     );
+    gh.lazySingleton<_i1.ProductDetailRemoteDataSource>(
+      () => _i1.ProductDetailRemoteImpl(gh<_i657.ProductClient>()),
+    );
+    gh.lazySingleton<_i798.ProductDetailRepository>(
+      () => _i310.ProductDetailRepositoryImpl(
+        gh<_i1.ProductDetailRemoteDataSource>(),
+        gh<_i383.RequestHandler>(),
+      ),
+    );
     gh.lazySingleton<_i706.ProductRepository>(
       () => _i180.ProductRepositoryImple(
         gh<_i436.ProductRemoteDataSourse>(),
         gh<_i383.RequestHandler>(),
       ),
+    );
+    gh.lazySingleton<_i260.GetProductDetailUsecase>(
+      () => _i260.GetProductDetailUsecase(gh<_i798.ProductDetailRepository>()),
     );
     gh.lazySingleton<_i761.GetProductUsecases>(
       () => _i761.GetProductUsecases(gh<_i706.ProductRepository>()),

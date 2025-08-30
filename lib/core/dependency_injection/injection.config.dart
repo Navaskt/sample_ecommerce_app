@@ -13,6 +13,7 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:sample_ecommerce_app/core/dependency_injection/register_service_module.dart'
     as _i173;
+import 'package:sample_ecommerce_app/core/navigation/app_router.dart' as _i763;
 import 'package:sample_ecommerce_app/core/service/api/dio_client.dart' as _i829;
 import 'package:sample_ecommerce_app/core/service/api/request_handler.dart'
     as _i383;
@@ -43,6 +44,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final registerServiceModule = _$RegisterServiceModule();
+    gh.singleton<_i763.AppRouter>(() => _i763.AppRouter());
     gh.lazySingleton<_i829.DioClient>(() => registerServiceModule.dioClient);
     gh.lazySingleton<_i657.ProductClient>(
       () => registerServiceModule.productClient,

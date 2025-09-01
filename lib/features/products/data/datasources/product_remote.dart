@@ -12,8 +12,15 @@ class ProductRemoteImpl implements ProductRemoteDataSourse {
     final response = await productClient.getAllProduct();
     return response;
   }
+
+  @override
+  Future<ProductModel> fetchProductDetail(int id) async {
+    final response = await productClient.getProductDetail(id);
+    return response;
+  }
 }
 
 abstract class ProductRemoteDataSourse {
   Future<List<ProductModel>> fetchAllProducts();
+  Future<ProductModel> fetchProductDetail(int id);
 }

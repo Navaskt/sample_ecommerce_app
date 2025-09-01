@@ -1,8 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sample_ecommerce_app/core/navigation/app_router_path.dart';
-import 'package:sample_ecommerce_app/features/product_details/presentation/screens/product_detail_screen.dart';
 import 'package:sample_ecommerce_app/features/products/presentation/screens/product_screen.dart';
+
+import '../../features/products/presentation/screens/product_detail_screen.dart';
 
 @singleton
 class AppRouter {

@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sample_ecommerce_app/core/dependency_injection/injection.dart';
-import 'package:sample_ecommerce_app/features/product_details/domain/usecases/get_product_detail_usecase.dart';
 
-import '../../../products/domain/entities/product_entity.dart';
+import '../../domain/entities/product_entity.dart';
+import '../../domain/usecases/get_product_detail_usecases.dart';
 
 part 'product_detail_state.dart';
 part 'product_detail_notifier.freezed.dart';
@@ -18,7 +18,7 @@ class ProductDetailNotifier extends _$ProductDetailNotifier {
   }
 
   Future<void> getProductDetail(int id) async {
-    final getProductUsescases = getIt<GetProductDetailUsecase>();
+    final getProductUsescases = getIt<GetProductDetailUsecases>();
     state = state.copyWith(productDetails: const AsyncValue.loading());
     final result = await getProductUsescases(id);
     result.fold(

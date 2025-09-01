@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sample_ecommerce_app/core/errors/failures.dart';
-import 'package:sample_ecommerce_app/features/products/data/datasources/product_remote.dart';
+import 'package:sample_ecommerce_app/features/products/data/datasources/product_remote_data_source.dart';
 import 'package:sample_ecommerce_app/features/products/data/mappers/product_mappers.dart';
 
 import '../../../../core/service/api/request_handler.dart';

@@ -1,12 +1,13 @@
 import 'package:injectable/injectable.dart';
-import 'package:sample_ecommerce_app/core/service/clients/product_client.dart';
 
+import '../../../../core/service/clients/product_client.dart';
 import '../models/product_model.dart';
+import 'product_remote_data_source.dart';
 
 @LazySingleton(as: ProductRemoteDataSourse)
-class ProductRemoteImpl implements ProductRemoteDataSourse {
+class ProductRemoteDataSourceImpl implements ProductRemoteDataSourse {
   final ProductClient productClient;
-  ProductRemoteImpl(this.productClient);
+  ProductRemoteDataSourceImpl(this.productClient);
   @override
   Future<List<ProductModel>> fetchAllProducts() async {
     final response = await productClient.getAllProduct();
@@ -18,9 +19,4 @@ class ProductRemoteImpl implements ProductRemoteDataSourse {
     final response = await productClient.getProductDetail(id);
     return response;
   }
-}
-
-abstract class ProductRemoteDataSourse {
-  Future<List<ProductModel>> fetchAllProducts();
-  Future<ProductModel> fetchProductDetail(int id);
 }

@@ -15,6 +15,9 @@ class ProductDetailScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Detail view')),
       body: state.when(
+        loading: () => Center(child: CircularProgressIndicator()),
+        error: (error, stackTrace) =>
+            AppErrorWidget(errorMessage: error.toString()),
         data: (data) {
           return SingleChildScrollView(
             child: Padding(
@@ -91,9 +94,6 @@ class ProductDetailScreen extends ConsumerWidget {
             ),
           );
         },
-        error: (error, stackTrace) =>
-            AppErrorWidget(errorMessage: error.toString()),
-        loading: () => Center(child: CircularProgressIndicator()),
       ),
     );
   }

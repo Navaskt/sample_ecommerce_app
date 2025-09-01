@@ -18,6 +18,9 @@ class ProductScreen extends ConsumerWidget {
         backgroundColor: Colors.blueGrey,
       ),
       body: state.products.when(
+        loading: () => Center(child: CircularProgressIndicator()),
+        error: (error, stackTrace) =>
+            AppErrorWidget(errorMessage: error.toString()),
         data: (product) {
           return ListView.builder(
             itemCount: product.length,
@@ -34,9 +37,6 @@ class ProductScreen extends ConsumerWidget {
             },
           );
         },
-        error: (error, stackTrace) =>
-            AppErrorWidget(errorMessage: error.toString()),
-        loading: () => Center(child: CircularProgressIndicator()),
       ),
     );
   }

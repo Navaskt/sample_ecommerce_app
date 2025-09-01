@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/dependency_injection/injection.dart';
 import '../../domain/entities/product_entity.dart';
+import '../../domain/usecases/get_product_detail_usecases.dart';
 import '../../domain/usecases/get_product_usecases.dart';
 
 part 'product_state.dart';
@@ -28,6 +29,20 @@ class ProductNotifier extends _$ProductNotifier {
       ),
       (products) {
         state = state.copyWith(products: AsyncData(products));
+      },
+    );
+  }
+
+  Future<void> getProductDetail(int id) async {
+    final getProductUsescases = getIt<GetProductDetailUsecases>();
+    state = state.copyWith(productDetails: const AsyncValue.loading());
+    final result = await getProductUsescases(id);
+    result.fold(
+      (failier) => state = state.copyWith(
+        productDetails: AsyncValue.error(failier, StackTrace.current),
+      ),
+      (productDetail) {
+        state = state.copyWith(productDetails: AsyncValue.data(productDetail));
       },
     );
   }

@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sample_ecommerce_app/features/products/presentation/controller/product_detail_notifier.dart';
 
 import '../../../products/presentation/widgets/app_error_widget.dart';
+import '../controller/product_notifier.dart';
 
-class ProductDetailScreen extends ConsumerWidget {
+class ProductDetailScreen extends ConsumerStatefulWidget {
   const ProductDetailScreen({super.key, required this.id});
   final int id;
   @override
-  Widget build(BuildContext context, ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
+  @override
+  void initState() {
+    Future.microtask(
+      () => ref
+          .read(productNotifierProvider.notifier)
+          .getProductDetail(widget.id),
+    );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final state = ref.watch(
-      productDetailNotifierProvider(id).select((state) => state.productDetails),
+      productNotifierProvider.select((state) => state.productDetails),
     );
     return Scaffold(
       appBar: AppBar(title: Text('Detail view')),

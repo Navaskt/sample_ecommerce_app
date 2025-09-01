@@ -24,7 +24,7 @@ import 'package:sample_ecommerce_app/features/products/data/datasources/product_
 import 'package:sample_ecommerce_app/features/products/data/datasources/product_remote_data_source_impl.dart'
     as _i1043;
 import 'package:sample_ecommerce_app/features/products/data/repositories/product_repository_impl.dart'
-    as _i180;
+    as _i932;
 import 'package:sample_ecommerce_app/features/products/domain/repositories/product_repository.dart'
     as _i706;
 import 'package:sample_ecommerce_app/features/products/domain/usecases/get_product_detail_usecases.dart'
@@ -50,7 +50,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i1043.ProductRemoteDataSourceImpl(gh<_i657.ProductClient>()),
     );
     gh.lazySingleton<_i706.ProductRepository>(
-      () => _i180.ProductRepositoryImple(
+      () => _i932.ProductRepositoryImple(
         gh<_i982.ProductRemoteDataSourse>(),
         gh<_i383.RequestHandler>(),
       ),

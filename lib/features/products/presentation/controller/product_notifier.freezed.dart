@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductState {
 
- AsyncValue<List<ProductEntity>> get products;
+ AsyncValue<List<ProductEntity>> get products; AsyncValue<ProductEntity> get productDetails;
 /// Create a copy of ProductState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ProductStateCopyWith<ProductState> get copyWith => _$ProductStateCopyWithImpl<P
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductState&&(identical(other.products, products) || other.products == products));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductState&&(identical(other.products, products) || other.products == products)&&(identical(other.productDetails, productDetails) || other.productDetails == productDetails));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,products);
+int get hashCode => Object.hash(runtimeType,products,productDetails);
 
 @override
 String toString() {
-  return 'ProductState(products: $products)';
+  return 'ProductState(products: $products, productDetails: $productDetails)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $ProductStateCopyWith<$Res>  {
   factory $ProductStateCopyWith(ProductState value, $Res Function(ProductState) _then) = _$ProductStateCopyWithImpl;
 @useResult
 $Res call({
- AsyncValue<List<ProductEntity>> products
+ AsyncValue<List<ProductEntity>> products, AsyncValue<ProductEntity> productDetails
 });
 
 
@@ -62,10 +62,11 @@ class _$ProductStateCopyWithImpl<$Res>
 
 /// Create a copy of ProductState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? products = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? products = null,Object? productDetails = null,}) {
   return _then(_self.copyWith(
 products: null == products ? _self.products : products // ignore: cast_nullable_to_non_nullable
-as AsyncValue<List<ProductEntity>>,
+as AsyncValue<List<ProductEntity>>,productDetails: null == productDetails ? _self.productDetails : productDetails // ignore: cast_nullable_to_non_nullable
+as AsyncValue<ProductEntity>,
   ));
 }
 
@@ -150,10 +151,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( AsyncValue<List<ProductEntity>> products)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( AsyncValue<List<ProductEntity>> products,  AsyncValue<ProductEntity> productDetails)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductState() when $default != null:
-return $default(_that.products);case _:
+return $default(_that.products,_that.productDetails);case _:
   return orElse();
 
 }
@@ -171,10 +172,10 @@ return $default(_that.products);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( AsyncValue<List<ProductEntity>> products)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( AsyncValue<List<ProductEntity>> products,  AsyncValue<ProductEntity> productDetails)  $default,) {final _that = this;
 switch (_that) {
 case _ProductState():
-return $default(_that.products);case _:
+return $default(_that.products,_that.productDetails);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -191,10 +192,10 @@ return $default(_that.products);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( AsyncValue<List<ProductEntity>> products)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( AsyncValue<List<ProductEntity>> products,  AsyncValue<ProductEntity> productDetails)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductState() when $default != null:
-return $default(_that.products);case _:
+return $default(_that.products,_that.productDetails);case _:
   return null;
 
 }
@@ -206,10 +207,11 @@ return $default(_that.products);case _:
 
 
 class _ProductState implements ProductState {
-  const _ProductState({this.products = const AsyncValue.loading()});
+  const _ProductState({this.products = const AsyncValue.loading(), this.productDetails = const AsyncValue.loading()});
   
 
 @override@JsonKey() final  AsyncValue<List<ProductEntity>> products;
+@override@JsonKey() final  AsyncValue<ProductEntity> productDetails;
 
 /// Create a copy of ProductState
 /// with the given fields replaced by the non-null parameter values.
@@ -221,16 +223,16 @@ _$ProductStateCopyWith<_ProductState> get copyWith => __$ProductStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductState&&(identical(other.products, products) || other.products == products));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductState&&(identical(other.products, products) || other.products == products)&&(identical(other.productDetails, productDetails) || other.productDetails == productDetails));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,products);
+int get hashCode => Object.hash(runtimeType,products,productDetails);
 
 @override
 String toString() {
-  return 'ProductState(products: $products)';
+  return 'ProductState(products: $products, productDetails: $productDetails)';
 }
 
 
@@ -241,7 +243,7 @@ abstract mixin class _$ProductStateCopyWith<$Res> implements $ProductStateCopyWi
   factory _$ProductStateCopyWith(_ProductState value, $Res Function(_ProductState) _then) = __$ProductStateCopyWithImpl;
 @override @useResult
 $Res call({
- AsyncValue<List<ProductEntity>> products
+ AsyncValue<List<ProductEntity>> products, AsyncValue<ProductEntity> productDetails
 });
 
 
@@ -258,10 +260,11 @@ class __$ProductStateCopyWithImpl<$Res>
 
 /// Create a copy of ProductState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? products = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? products = null,Object? productDetails = null,}) {
   return _then(_ProductState(
 products: null == products ? _self.products : products // ignore: cast_nullable_to_non_nullable
-as AsyncValue<List<ProductEntity>>,
+as AsyncValue<List<ProductEntity>>,productDetails: null == productDetails ? _self.productDetails : productDetails // ignore: cast_nullable_to_non_nullable
+as AsyncValue<ProductEntity>,
   ));
 }
 

@@ -11,13 +11,15 @@ class ProductScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final state = ref.watch(productNotifierProvider);
+    final state = ref.watch(
+      productNotifierProvider.select((value) => value.products),
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text("All Products"),
         backgroundColor: Colors.blueGrey,
       ),
-      body: state.products.when(
+      body: state.when(
         loading: () => Center(child: CircularProgressIndicator()),
         error: (error, stackTrace) =>
             AppErrorWidget(errorMessage: error.toString()),

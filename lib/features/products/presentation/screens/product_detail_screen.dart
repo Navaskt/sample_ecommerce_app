@@ -30,86 +30,90 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
     );
     return Scaffold(
       appBar: AppBar(title: Text('Detail view')),
-      body: state.when(
-        loading: () => Center(child: CircularProgressIndicator()),
-        error: (error, stackTrace) =>
-            AppErrorWidget(errorMessage: error.toString()),
-        data: (data) {
-          return SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16.0, bottom: 8),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade400,
-                        borderRadius: BorderRadius.circular(10.0),
+      body: SafeArea(
+        child: state.when(
+          loading: () => Center(child: CircularProgressIndicator()),
+          error: (error, stackTrace) =>
+              AppErrorWidget(errorMessage: error.toString()),
+          data: (data) {
+            return SafeArea(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16.0, bottom: 8),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade400,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Image.network(
+                            data.image,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) =>
+                                const Center(
+                                  child: Text(
+                                    'No image',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                          ),
+                        ),
                       ),
-                      child: Image.network(
-                        data.image,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) =>
-                            const Center(
+
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Text(
+                          data.title,
+                          style: TextStyle(
+                            fontSize: 20,
+                            letterSpacing: 0.3,
+
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+
+                      Text(
+                        data.description,
+                        style: TextStyle(
+                          fontSize: 16,
+                          letterSpacing: 0.3,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+
+                      // Extra info
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
                               child: Text(
-                                'No image',
+                                "AED ${data.price.toString()}",
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                      ),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Text(
-                      data.title,
-                      style: TextStyle(
-                        fontSize: 20,
-                        letterSpacing: 0.3,
-
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-
-                  Text(
-                    data.description,
-                    style: TextStyle(
-                      fontSize: 16,
-                      letterSpacing: 0.3,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-
-                  // Extra info
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            "AED ${data.price.toString()}",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

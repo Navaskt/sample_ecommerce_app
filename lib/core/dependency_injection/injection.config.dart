@@ -25,6 +25,8 @@ import 'package:sample_ecommerce_app/features/products/data/repositories/product
     as _i180;
 import 'package:sample_ecommerce_app/features/products/domain/repositories/product_repository.dart'
     as _i706;
+import 'package:sample_ecommerce_app/features/products/domain/usecases/get_product_detail_usecases.dart'
+    as _i609;
 import 'package:sample_ecommerce_app/features/products/domain/usecases/get_product_usecases.dart'
     as _i761;
 
@@ -53,6 +55,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i761.GetProductUsecases>(
       () => _i761.GetProductUsecases(gh<_i706.ProductRepository>()),
+    );
+    gh.lazySingleton<_i609.GetProductDetailUsecases>(
+      () => _i609.GetProductDetailUsecases(gh<_i706.ProductRepository>()),
     );
     return this;
   }

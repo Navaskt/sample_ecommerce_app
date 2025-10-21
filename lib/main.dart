@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       routerConfig: getIt<AppRouter>().router,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData.dark(),
+      theme: ThemeData(),
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.dark,
     );
